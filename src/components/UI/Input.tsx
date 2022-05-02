@@ -6,8 +6,6 @@ type InputProps = {
 };
 
 const Input = styled.input<InputProps>`
-  font-size: ${({ theme }) => theme.font.size.xs};
-  line-height: ${({ theme }) => theme.font.size.s};
   border-radius: ${({ theme }) => theme.borderRadius.normal};
   background-color: ${({ theme }) => theme.color.inputBg};
   padding: 1.6rem;

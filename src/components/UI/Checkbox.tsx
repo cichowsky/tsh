@@ -9,7 +9,6 @@ const Checkbox = styled.input.attrs({ type: 'checkbox' })`
   border-radius: ${({ theme }) => theme.borderRadius.small};
   background-color: ${({ theme }) => theme.color.inputBg};
   border: 1px solid ${({ theme }) => theme.color.inputBorder};
-  cursor: pointer;
   transition: border-color 0.2s, background-color 0.2s;
 
   &:checked {

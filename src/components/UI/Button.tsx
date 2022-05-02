@@ -5,8 +5,6 @@ type ButtonProps = {
 };
 
 const Button = styled.button<ButtonProps>`
-  font-size: ${({ theme }) => theme.font.size.xs};
-  line-height: ${({ theme }) => theme.font.size.s};
   padding: 0.8em 1.7em;
   border-radius: ${({ theme }) => theme.borderRadius.small};
 

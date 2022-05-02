@@ -23,7 +23,16 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Nunito', sans-serif;
   }
 
-  button, a {
+  button, input[type="checkbox"] {
     cursor: pointer;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  label, input, button, p, a {
+    font-size: ${({ theme }) => theme.font.size.xs};
+    line-height: ${({ theme }) => theme.font.size.s};
   }
 `;
