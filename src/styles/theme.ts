@@ -20,6 +20,8 @@ const theme: DefaultTheme = {
     primary: colors.blue1,
     primaryStrong: colors.blue2,
     accent: colors.orange,
+    inputBg: colors.white,
+    inputBorder: colors.gray2,
   },
   font: {
     size: {

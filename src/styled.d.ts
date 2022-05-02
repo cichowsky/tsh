@@ -11,6 +11,8 @@ declare module 'styled-components' {
       primary: string;
       primaryStrong: string;
       accent: string;
+      inputBg: string;
+      inputBorder: string;
     };
     font: {
       size: {
