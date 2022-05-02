@@ -6,8 +6,8 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     color: {
       text: string;
-      textMuted: string;
       textLight: string;
+      muted: string;
       primary: string;
       primaryStrong: string;
       accent: string;

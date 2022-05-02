@@ -15,8 +15,8 @@ const colors = {
 const theme: DefaultTheme = {
   color: {
     text: colors.gray5,
-    textMuted: colors.gray4,
     textLight: colors.white,
+    muted: colors.gray4,
     primary: colors.blue1,
     primaryStrong: colors.blue2,
     accent: colors.orange,
