@@ -15,6 +15,24 @@ const colors = {
 const theme: DefaultTheme = {
   color: {
     text: colors.gray5,
+    textMuted: colors.gray4,
+    textLight: colors.white,
+    primary: colors.blue1,
+    primaryStrong: colors.blue2,
+    accent: colors.orange,
+  },
+  font: {
+    size: {
+      xs: '1.4rem',
+      s: '1.6rem',
+      m: '1.8rem',
+      l: '2.4rem',
+      xl: '3.0rem',
+    },
+  },
+  borderRadius: {
+    small: '0.4rem',
+    normal: '0.8rem',
   },
 };
 
