@@ -5,6 +5,7 @@ const colors = {
   blue2: '#2140E8',
   orange: '#F9A52B',
   white: '#FFFFFF',
+  gray0: '#F8F8FA',
   gray1: '#F0F1F5',
   gray2: '#E0E2EA',
   gray3: '#B9BDCF',
@@ -22,6 +23,8 @@ const theme: DefaultTheme = {
     accent: colors.orange,
     inputBg: colors.white,
     inputBorder: colors.gray2,
+    background: colors.gray0,
+    containerBg: colors.white,
   },
   font: {
     size: {
@@ -35,6 +38,13 @@ const theme: DefaultTheme = {
   borderRadius: {
     small: '0.4rem',
     normal: '0.8rem',
+  },
+  layout: {
+    maxWidth: '122.4rem',
+  },
+  mq: {
+    tablet: '@media (min-width: 768px)',
+    desktop: '@media (min-width: 1024px)',
   },
 };
 

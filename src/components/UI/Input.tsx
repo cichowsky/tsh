@@ -8,7 +8,7 @@ type InputProps = {
 const Input = styled.input<InputProps>`
   border-radius: ${({ theme }) => theme.borderRadius.normal};
   background-color: ${({ theme }) => theme.color.inputBg};
-  padding: 1.6rem;
+  padding: 1.5rem 1.6rem;
   border: 1px solid ${({ theme }) => theme.color.inputBorder};
 
   &::placeholder {

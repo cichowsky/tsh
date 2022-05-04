@@ -13,6 +13,8 @@ declare module 'styled-components' {
       accent: string;
       inputBg: string;
       inputBorder: string;
+      background: string;
+      containerBg: string;
     };
     font: {
       size: {
@@ -26,6 +28,13 @@ declare module 'styled-components' {
     borderRadius: {
       small: string;
       normal: string;
+    };
+    layout: {
+      maxWidth: string;
+    };
+    mq: {
+      tablet: string;
+      desktop: string;
     };
   }
 }
