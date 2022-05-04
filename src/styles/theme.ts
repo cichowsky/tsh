@@ -40,7 +40,7 @@ const theme: DefaultTheme = {
     normal: '0.8rem',
   },
   layout: {
-    maxWidth: '122.4rem',
+    maxWidth: '127.2rem',
   },
   mq: {
     tablet: '@media (min-width: 768px)',

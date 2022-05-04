@@ -25,7 +25,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Nunito', sans-serif;
   }
 
-  button, input[type="checkbox"] {
+  button:not([disabled]), input[type="checkbox"] {
     cursor: pointer;
   }
 
