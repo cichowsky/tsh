@@ -11,6 +11,8 @@ const colors = {
   gray3: '#B9BDCF',
   gray4: '#9194A5',
   gray5: '#1A1B1D',
+  black: '#000000',
+  darkTransparent: 'rgb(26, 27, 29, 0.9)',
 };
 
 const theme: DefaultTheme = {
@@ -26,6 +28,9 @@ const theme: DefaultTheme = {
     background: colors.gray0,
     containerBg: colors.white,
     iconMuted: colors.gray4,
+    iconClose: colors.black,
+    iconCloseBg: colors.gray0,
+    overlay: colors.darkTransparent,
   },
   font: {
     size: {

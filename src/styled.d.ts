@@ -16,6 +16,9 @@ declare module 'styled-components' {
       background: string;
       containerBg: string;
       iconMuted: string;
+      iconClose: string;
+      iconCloseBg: string;
+      overlay: string;
     };
     font: {
       size: {

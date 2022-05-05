@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import MainTemplate from 'components/templates/MainTemplate';
 import SearchForm from 'components/SearchForm/SearchForm';
-import ProductCard, { ProductCardProps, ProductCardList } from 'components/Product/ProductCard';
+import ProductCard, { ProductCardList } from 'components/Product/ProductCard';
+import { Product } from 'components/Product/Product.type';
 import ProductEmpty from 'components/Product/ProductEmpty';
 import { Spinner } from 'components/UI';
 
 export const Products = () => {
-  const [products, setProducts] = useState<ProductCardProps[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     fetch('https://join-tsh-api-staging.herokuapp.com/products?limit=12')
