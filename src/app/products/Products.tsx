@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import MainTemplate from 'components/templates/MainTemplate';
 import SearchForm from 'components/SearchForm/SearchForm';
-import ProductCard, { ProductCardProps, ProductCardList } from 'components/ProductCard/ProductCard';
+import ProductCard, { ProductCardProps, ProductCardList } from 'components/Product/ProductCard';
+import ProductEmpty from 'components/Product/ProductEmpty';
 import { Spinner } from 'components/UI';
 
 export const Products = () => {
@@ -18,9 +19,11 @@ export const Products = () => {
 
   return (
     <MainTemplate headerContent={<SearchForm />}>
-      {isLoading ? (
-        <Spinner />
-      ) : (
+      {isLoading && <Spinner />}
+
+      {!isLoading && products.length === 0 && <ProductEmpty />}
+
+      {!isLoading && products.length > 0 && (
         <ProductCardList>
           {products.map((product) => (
             <ProductCard key={product.id} {...product} />

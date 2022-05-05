@@ -15,6 +15,7 @@ declare module 'styled-components' {
       inputBorder: string;
       background: string;
       containerBg: string;
+      iconMuted: string;
     };
     font: {
       size: {
