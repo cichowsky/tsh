@@ -1,7 +1,7 @@
 import React from 'react';
 import { Heading, Paragraph } from 'components/UI';
 import { ReactComponent as TaskListIcon } from 'assets/icons/task_list.svg';
-import { StyledProductEmpty, StyledIconWrapper } from './ProductEmty.styles';
+import { StyledProductEmpty, StyledIconWrapper } from './ProductEmpty.styles';
 
 const ProductEmpty = () => {
   return (

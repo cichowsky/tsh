@@ -16,6 +16,7 @@ export const StyledCardWrapper = styled.article`
   flex-direction: column;
   overflow: hidden;
   min-height: 40rem;
+  width: 100%;
   max-width: 42rem;
   margin: 0 auto;
 
