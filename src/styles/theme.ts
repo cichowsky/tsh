@@ -41,6 +41,20 @@ const theme: DefaultTheme = {
       xl: '3.0rem',
     },
   },
+  size: {
+    xxs: '0.4rem',
+    xs: '0.8rem',
+    s: '1.6rem',
+    m: '2.4rem',
+    l: '3.2rem',
+    xl: '4.0rem',
+    xxl: '4.8rem',
+    xxxl: '5.6rem',
+  },
+  mq: {
+    tablet: '@media (min-width: 768px)',
+    desktop: '@media (min-width: 1024px)',
+  },
   borderRadius: {
     small: '0.4rem',
     normal: '0.8rem',
@@ -48,10 +62,7 @@ const theme: DefaultTheme = {
   layout: {
     maxWidth: '127.2rem',
   },
-  mq: {
-    tablet: '@media (min-width: 768px)',
-    desktop: '@media (min-width: 1024px)',
-  },
+  transitionTime: '200ms',
 };
 
 export { theme };

@@ -1,12 +1,12 @@
 import React from 'react';
 import { FormGroup, Checkbox } from 'components/UI';
-import { StyledSearchForm, StyledInput, StyledFiltersWrapper } from './SearchForm.styles';
+import { SSearchForm, SSearchInput, SFiltersWrapper } from './SearchForm.styles';
 
 const SearchForm = () => {
   return (
-    <StyledSearchForm>
-      <StyledInput id="search" type="text" placeholder="Search" search />
-      <StyledFiltersWrapper>
+    <SSearchForm>
+      <SSearchInput id="search" type="text" placeholder="Search" search />
+      <SFiltersWrapper>
         <FormGroup>
           <Checkbox id="active" name="active" />
           <label htmlFor="active">Active</label>
@@ -15,8 +15,8 @@ const SearchForm = () => {
           <Checkbox id="promo" name="promo" />
           <label htmlFor="promo">Promo</label>
         </FormGroup>
-      </StyledFiltersWrapper>
-    </StyledSearchForm>
+      </SFiltersWrapper>
+    </SSearchForm>
   );
 };
 

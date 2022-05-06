@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 import { Input } from 'components/UI';
 
-export const StyledSearchForm = styled.form`
+export const SSearchForm = styled.form`
   display: flex;
   flex-wrap: wrap;
-  gap: 2.4rem;
+  gap: ${({ theme }) => theme.size.m};
 `;
 
-export const StyledInput = styled(Input)`
+export const SSearchInput = styled(Input)`
   flex-grow: 1;
   max-width: 39.2rem;
 `;
 
-export const StyledFiltersWrapper = styled.div`
+export const SFiltersWrapper = styled.div`
   display: flex;
-  gap: 2.4rem;
+  gap: ${({ theme }) => theme.size.m};
 `;

@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const StyledHeader = styled.header`
+export const SHeader = styled.header`
   background-color: ${({ theme }) => theme.color.containerBg};
 `;
 
-export const StyledInner = styled.div`
+export const SInner = styled.div`
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  padding: 4.8rem 2.4rem 3.2rem;
+  padding: ${({ theme: { size } }) => `${size.xxl} ${size.m} ${size.l}`};
   justify-content: space-between;
   align-items: center;
   gap: 3rem;
@@ -17,7 +17,7 @@ export const StyledInner = styled.div`
 
   ${({ theme }) => theme.mq.tablet} {
     flex-wrap: nowrap;
-    padding: 4.8rem 2.4rem;
+    padding: ${({ theme: { size } }) => `${size.xxl} ${size.m}`};
   }
 
   ${({ theme }) => theme.mq.desktop} {
@@ -25,17 +25,17 @@ export const StyledInner = styled.div`
   }
 `;
 
-export const StyledLogoLink = styled(Link)`
+export const SLogoLink = styled(Link)`
   display: flex;
   align-items: center;
-  height: 4rem;
+  height: ${({ theme }) => theme.size.xl};
 `;
 
-export const StyledLogoWrapper = styled.div`
+export const SLogoWrapper = styled.div`
   flex-shrink: 0;
 `;
 
-export const StyledContentWrapper = styled.div`
+export const SContentWrapper = styled.div`
   flex-grow: 1;
   flex-basis: 100%;
 
@@ -44,7 +44,7 @@ export const StyledContentWrapper = styled.div`
   }
 `;
 
-export const StyledActionsWrapper = styled.div`
+export const SActionsWrapper = styled.div`
   flex-shrink: 0;
 
   ${({ theme }) => theme.mq.tablet} {

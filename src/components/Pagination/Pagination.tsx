@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyledPagination, StyledButton, StyledPages, StyledBreak } from './Pagination.styles';
+import { SPagination, SButton, SPages, SBreak } from './Pagination.styles';
 
 type PaginationProps = {
   activePage?: number;
@@ -41,39 +41,39 @@ const Pagination = ({ activePage = 1, count, onPageChange }: PaginationProps) =>
   }
 
   return (
-    <StyledPagination role="navigation" aria-label="pagination">
-      <StyledButton
+    <SPagination role="navigation" aria-label="pagination">
+      <SButton
         disabled={active === 1}
         aria-label="go to first page"
         onClick={() => hadlePageClick(1)}
       >
         First
-      </StyledButton>
+      </SButton>
 
-      <StyledPages>
+      <SPages>
         {pages?.map((page) => {
-          if (page === 0) return <StyledBreak key={page}>...</StyledBreak>;
+          if (page === 0) return <SBreak key={page}>...</SBreak>;
 
           return (
-            <StyledButton
+            <SButton
               key={page}
               isActive={active === page}
               aria-label={`go to page ${page}`}
               onClick={() => hadlePageClick(page)}
             >
               {page}
-            </StyledButton>
+            </SButton>
           );
         })}
-      </StyledPages>
-      <StyledButton
+      </SPages>
+      <SButton
         disabled={active === count}
         aria-label="go to last page"
         onClick={() => hadlePageClick(count)}
       >
         Last
-      </StyledButton>
-    </StyledPagination>
+      </SButton>
+    </SPagination>
   );
 };
 

@@ -4,12 +4,12 @@ import { Button } from 'components/UI';
 import { AppRoute } from 'routing/AppRoute.enum';
 import { ReactComponent as LogoSVG } from 'assets/icons/logo.svg';
 import {
-  StyledHeader,
-  StyledInner,
-  StyledLogoWrapper,
-  StyledLogoLink,
-  StyledActionsWrapper,
-  StyledContentWrapper,
+  SHeader,
+  SInner,
+  SLogoWrapper,
+  SLogoLink,
+  SActionsWrapper,
+  SContentWrapper,
 } from './Header.styles';
 
 type HeaderProps = {
@@ -18,23 +18,23 @@ type HeaderProps = {
 
 export const Header = ({ children }: HeaderProps) => {
   return (
-    <StyledHeader>
-      <StyledInner>
-        <StyledLogoWrapper>
-          <StyledLogoLink to={AppRoute.Home}>
+    <SHeader>
+      <SInner>
+        <SLogoWrapper>
+          <SLogoLink to={AppRoute.Home}>
             <LogoSVG />
-          </StyledLogoLink>
-        </StyledLogoWrapper>
+          </SLogoLink>
+        </SLogoWrapper>
 
-        <StyledActionsWrapper>
+        <SActionsWrapper>
           <Button ghost as={Link} to={AppRoute.Login}>
             Log in
           </Button>
-        </StyledActionsWrapper>
+        </SActionsWrapper>
 
-        <StyledContentWrapper>{children}</StyledContentWrapper>
-      </StyledInner>
-    </StyledHeader>
+        <SContentWrapper>{children}</SContentWrapper>
+      </SInner>
+    </SHeader>
   );
 };
 

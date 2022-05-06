@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export const StyledRatingDisplay = styled.div`
+export const SRatingDisplay = styled.div`
   display: inline-flex;
   flex-shrink: 0;
-  gap: 0.8rem;
-  margin: 1.6rem 0;
+  gap: ${({ theme }) => theme.size.xs};
+  margin: ${({ theme }) => theme.size.s} 0;
 
   & > img {
-    width: 1.6rem;
-    height: 1.6rem;
+    width: ${({ theme }) => theme.size.s};
+    height: ${({ theme }) => theme.size.s};
   }
 `;

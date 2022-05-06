@@ -29,6 +29,20 @@ declare module 'styled-components' {
         xl: string;
       };
     };
+    size: {
+      xxs: string;
+      xs: string;
+      s: string;
+      m: string;
+      l: string;
+      xl: string;
+      xxl: string;
+      xxxl: string;
+    };
+    mq: {
+      tablet: string;
+      desktop: string;
+    };
     borderRadius: {
       small: string;
       normal: string;
@@ -36,9 +50,6 @@ declare module 'styled-components' {
     layout: {
       maxWidth: string;
     };
-    mq: {
-      tablet: string;
-      desktop: string;
-    };
+    transitionTime: string;
   }
 }

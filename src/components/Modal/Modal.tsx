@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import ReactModal from 'react-modal';
 import { ReactComponent as CloseIcon } from 'assets/icons/close.svg';
-import { overlayStyles, contentStyles, StyledCloseButton } from './Modal.styles';
+import { overlayStyles, contentStyles, SCloseButton } from './Modal.styles';
 import './Modal.styles.css';
 
 type ModalProps = {
@@ -19,11 +19,11 @@ const Modal = ({ isOpen, setIsOpen, children }: ModalProps) => {
         overlay: { ...overlayStyles },
         content: { ...contentStyles },
       }}
-      closeTimeoutMS={150}
+      closeTimeoutMS={200}
     >
-      <StyledCloseButton type="button" onClick={() => setIsOpen(false)}>
+      <SCloseButton type="button" onClick={() => setIsOpen(false)}>
         <CloseIcon />
-      </StyledCloseButton>
+      </SCloseButton>
       {children}
     </ReactModal>
   );

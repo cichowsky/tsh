@@ -8,7 +8,7 @@ type InputProps = {
 const Input = styled.input<InputProps>`
   border-radius: ${({ theme }) => theme.borderRadius.normal};
   background-color: ${({ theme }) => theme.color.inputBg};
-  padding: 1.5rem 1.6rem;
+  padding: 1.5rem ${({ theme }) => theme.size.s};
   border: 1px solid ${({ theme }) => theme.color.inputBorder};
 
   &::placeholder {
@@ -18,10 +18,10 @@ const Input = styled.input<InputProps>`
   ${({ search }) =>
     search &&
     css`
-      padding-right: 4.8rem;
+      padding-right: ${({ theme }) => theme.size.xxl};
       background-image: url(${searchIconURL});
       background-repeat: no-repeat;
-      background-size: 2.4rem;
+      background-size: ${({ theme }) => theme.size.m};
       background-position: calc(100% - 1.2rem) 50%;
     `}
 `;

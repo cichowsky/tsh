@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { theme } from 'styles/theme';
 import { rotate } from 'styles/keyframes';
+import { SRonly } from 'components/UI';
 
-const SpinnerContainer = styled.div`
+const SSpinnerWrapper = styled.div`
   text-align: center;
 
   & > svg {
@@ -11,21 +12,10 @@ const SpinnerContainer = styled.div`
   }
 `;
 
-const Sronly = styled.span`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-`;
-
 const Spinner = () => {
   return (
-    <SpinnerContainer>
-      <Sronly>Loading</Sronly>
+    <SSpinnerWrapper>
+      <SRonly>Loading</SRonly>
       <svg
         width="60"
         height="60"
@@ -41,7 +31,7 @@ const Spinner = () => {
           strokeLinecap="round"
         />
       </svg>
-    </SpinnerContainer>
+    </SSpinnerWrapper>
   );
 };
 

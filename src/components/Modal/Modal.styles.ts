@@ -9,7 +9,7 @@ export const overlayStyles = {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  padding: '2.4rem',
+  padding: themes.size.m,
 } as CSSProperties;
 
 export const contentStyles = {
@@ -23,17 +23,17 @@ export const contentStyles = {
   borderRadius: themes.borderRadius.normal,
 } as CSSProperties;
 
-export const StyledCloseButton = styled.button`
+export const SCloseButton = styled.button`
   position: absolute;
-  top: 1.6rem;
-  right: 1.6rem;
+  top: ${({ theme }) => theme.size.s};
+  right: ${({ theme }) => theme.size.s};
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 3.2rem;
-  height: 3.2rem;
+  width: ${({ theme }) => theme.size.l};
+  height: ${({ theme }) => theme.size.l};
   padding: 0;
 
   color: ${({ theme }) => theme.color.iconClose};

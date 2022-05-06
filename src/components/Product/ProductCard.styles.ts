@@ -1,17 +1,17 @@
 import styled from 'styled-components';
-import { StyledRatingDisplay } from 'components/RatingDisplay/RatingDisplay.styles';
+import { SRatingDisplay } from 'components/RatingDisplay/RatingDisplay.styles';
 
 export const ProductCardList = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(27.2rem, 1fr));
-  gap: 2.4rem;
+  gap: ${({ theme }) => theme.size.m};
 
   ${({ theme }) => theme.mq.desktop} {
-    gap: 3.2rem 2.4rem;
+    gap: ${({ theme: { size } }) => `${size.l} ${size.m}`};
   }
 `;
 
-export const StyledCardWrapper = styled.article`
+export const SCardWrapper = styled.article`
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -26,23 +26,23 @@ export const StyledCardWrapper = styled.article`
   background-color: ${({ theme }) => theme.color.containerBg};
   border-radius: ${({ theme }) => theme.borderRadius.normal};
 
-  ${StyledRatingDisplay} {
+  ${SRatingDisplay} {
     margin-top: auto;
   }
 `;
 
-export const StyledContentWrapper = styled.div`
+export const SContentWrapper = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  padding: 1.6rem 1.6rem 2.4rem;
+  padding: ${({ theme: { size } }) => `${size.s} ${size.s} ${size.m}`};
 `;
 
 type ImageWrapperProps = {
   muted?: boolean;
 };
 
-export const StyledImageWrapper = styled.div<ImageWrapperProps>`
+export const SImageWrapper = styled.div<ImageWrapperProps>`
   position: relative;
 
   & > img {
@@ -55,11 +55,11 @@ export const StyledImageWrapper = styled.div<ImageWrapperProps>`
   }
 `;
 
-export const StyledBadge = styled.span`
+export const SBadge = styled.span`
   position: absolute;
   left: 0;
-  top: 1.6rem;
-  padding: 0.4rem 1.6rem;
+  top: ${({ theme }) => theme.size.s};
+  padding: ${({ theme: { size } }) => `${size.xxs} ${size.s}`};
   background-color: ${({ theme }) => theme.color.accent};
   color: ${({ theme }) => theme.color.textLight};
   z-index: 1;
