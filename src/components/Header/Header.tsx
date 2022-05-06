@@ -27,7 +27,7 @@ export const Header = ({ children }: HeaderProps) => {
         </SLogoWrapper>
 
         <SActionsWrapper>
-          <Button ghost as={Link} to={AppRoute.Login}>
+          <Button $ghost as={Link} to={AppRoute.Login}>
             Log in
           </Button>
         </SActionsWrapper>
