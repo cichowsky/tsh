@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MainTemplate from 'components/templates/MainTemplate';
-import SearchForm from 'components/SearchForm/SearchForm';
+import SearchForm, { Inputs } from 'components/SearchForm/SearchForm';
 import ProductCard, { ProductCardList } from 'components/Product/ProductCard';
 import ProductEmpty from 'components/Product/ProductEmpty';
 import Pagination from 'components/Pagination/Pagination';
@@ -26,8 +26,12 @@ export const Products = () => {
     console.log('clicked page', page); // trigger request -> new page
   };
 
+  const handleFormData = (formData: Partial<Inputs>) => {
+    console.log('data from form', formData);
+  };
+
   return (
-    <MainTemplate headerContent={<SearchForm />}>
+    <MainTemplate headerContent={<SearchForm onFormSubmit={handleFormData} />}>
       {isLoading && <Spinner />}
 
       {!isLoading && products.length === 0 && <ProductEmpty />}
