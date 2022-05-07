@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-import searchIconURL from 'assets/icons/search.svg';
+import styled from 'styled-components';
 
 type InputProps = {
   search?: boolean;
@@ -14,16 +13,6 @@ const Input = styled.input<InputProps>`
   &::placeholder {
     color: ${({ theme }) => theme.color.muted};
   }
-
-  ${({ search }) =>
-    search &&
-    css`
-      padding-right: ${({ theme }) => theme.size.xxl};
-      background-image: url(${searchIconURL});
-      background-repeat: no-repeat;
-      background-size: ${({ theme }) => theme.size.m};
-      background-position: calc(100% - 1.2rem) 50%;
-    `}
 `;
 
 export default Input;

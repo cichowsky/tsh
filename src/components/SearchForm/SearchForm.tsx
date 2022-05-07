@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { FormGroup, Checkbox } from 'components/UI';
-import { SSearchForm, SSearchInput, SFiltersWrapper } from './SearchForm.styles';
+import SearchBar from 'components/SearchBar/SearchBar';
+import { SSearchForm, SFiltersWrapper } from './SearchForm.styles';
 
 export type Inputs = {
   search: string;
@@ -29,7 +30,7 @@ const SearchForm = ({ onFormSubmit }: SearchFormProps) => {
 
   return (
     <SSearchForm onSubmit={handleSubmit(onSubmit)}>
-      <SSearchInput {...register('search')} placeholder="Search" search />
+      <SearchBar {...register('search')} placeholder="Search" />
       <SFiltersWrapper>
         <FormGroup>
           <Checkbox {...register('active')} id="active" />
