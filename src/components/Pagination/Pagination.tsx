@@ -2,48 +2,47 @@ import React, { useState, useEffect } from 'react';
 import { SPagination, SButton, SPages, SBreak } from './Pagination.styles';
 
 type PaginationProps = {
-  activePage?: number;
+  activePage: number;
   count: number;
   onPageChange?: (page: number) => void;
 };
 
-const Pagination = ({ activePage = 1, count, onPageChange }: PaginationProps) => {
-  const [active, setActive] = useState(activePage);
+const Pagination = ({ activePage = 1, count = 0, onPageChange }: PaginationProps) => {
   const [pages, setPages] = useState<number[]>([]);
 
   useEffect(() => {
     if (count <= 6) setPages(Array.from({ length: count }, (_, i) => i + 1));
 
     if (count > 6) {
-      if ([1, 2].includes(active)) {
+      if ([1, 2].includes(activePage)) {
         setPages([1, 2, 3, 0, count - 2, count - 1, count]);
       }
 
-      if (active >= 3 && active < count - 4) {
-        setPages([active - 1, active, active + 1, 0, count - 2, count - 1, count]);
+      if (activePage >= 3 && activePage < count - 4) {
+        setPages([activePage - 1, activePage, activePage + 1, 0, count - 2, count - 1, count]);
       }
 
-      if (active >= count - 4) {
+      if (activePage >= count - 4) {
         setPages([0, count - 5, count - 4, count - 3, count - 2, count - 1, count]);
       }
     }
-  }, [active, count]);
+  }, [activePage, count]);
 
   const hadlePageClick = (page: number) => {
     if (typeof onPageChange !== 'undefined') onPageChange(page);
-    setActive(page); // wait with change to load new data?
   };
 
-  if (pages.length <= 1 || count === 0) return null;
-
-  if (active > count) {
-    throw new Error(`Active page number ${active} is greater than page count ${count}!`);
+  if (activePage > count) {
+    // eslint-disable-next-line no-console
+    console.error(`Pagination error: activePage ${activePage} is greater than count ${count}!`);
   }
+
+  if (pages.length <= 1 || count === 0 || activePage > count) return null;
 
   return (
     <SPagination role="navigation" aria-label="pagination">
       <SButton
-        disabled={active === 1}
+        disabled={activePage === 1}
         aria-label="go to first page"
         onClick={() => hadlePageClick(1)}
       >
@@ -57,7 +56,7 @@ const Pagination = ({ activePage = 1, count, onPageChange }: PaginationProps) =>
           return (
             <SButton
               key={page}
-              isActive={active === page}
+              isActive={activePage === page}
               aria-label={`go to page ${page}`}
               onClick={() => hadlePageClick(page)}
             >
@@ -67,7 +66,7 @@ const Pagination = ({ activePage = 1, count, onPageChange }: PaginationProps) =>
         })}
       </SPages>
       <SButton
-        disabled={active === count}
+        disabled={activePage === count}
         aria-label="go to last page"
         onClick={() => hadlePageClick(count)}
       >

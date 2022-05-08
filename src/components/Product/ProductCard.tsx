@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Modal from 'components/Modal/Modal';
-import { Button, Heading, Paragraph } from 'components/UI';
 import RatingDisplay from 'components/RatingDisplay/RatingDisplay';
+import { Button, Heading, Paragraph } from 'components/UI';
+import { Product } from 'services/products.types';
 import ProductDetails from './ProductDetails';
 import {
   ProductCardList,
@@ -10,7 +11,6 @@ import {
   SBadge,
   SContentWrapper,
 } from './ProductCard.styles';
-import { Product } from './Product.type';
 
 export { ProductCardList };
 
