@@ -6,8 +6,9 @@ import ProductCard, { ProductCardList } from 'components/Product/ProductCard';
 import ProductEmpty from 'components/Product/ProductEmpty';
 import Pagination from 'components/Pagination/Pagination';
 import { Spinner } from 'components/UI';
-import { useProducts, productsParamsFromURL, productsParamsToURL } from 'services/products';
+import { useProducts } from 'services/products';
 import { Product, ProductsParams, InputsParams } from 'services/products.types';
+import { productsParamsFromURL, productsParamsToURL } from './Products.helpers';
 
 export const Products = () => {
   const { search, pathname } = useLocation();
