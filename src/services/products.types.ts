@@ -35,3 +35,5 @@ export type ProductsResponseData = {
     last: string;
   };
 };
+
+export type ProductsData = ProductsResponseData | undefined;

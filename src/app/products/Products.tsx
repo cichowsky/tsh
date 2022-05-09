@@ -6,7 +6,7 @@ import ProductCard, { ProductCardList } from 'components/Product/ProductCard';
 import ProductEmpty from 'components/Product/ProductEmpty';
 import Pagination from 'components/Pagination/Pagination';
 import { Spinner } from 'components/UI';
-import { useProducts } from 'services/products';
+import { useProducts, useProductsDataLoaded } from 'services/products';
 import { Product, ProductsParams, InputsParams } from 'services/products.types';
 import { productsParamsFromURL, productsParamsToURL } from './Products.helpers';
 
@@ -15,8 +15,12 @@ export const Products = () => {
   const history = useHistory();
 
   const [params, setParams] = useState<ProductsParams>(() => productsParamsFromURL(search));
-  const { data, isLoading } = useProducts(params, {
-    onSuccess: () => productsParamsToURL(params, history, pathname),
+
+  const { data, isLoading } = useProducts(params);
+
+  useProductsDataLoaded(data, () => {
+    productsParamsToURL(params, history, pathname);
+    window.scrollTo(0, 0);
   });
 
   const handlePageClick = useCallback(
@@ -24,9 +28,7 @@ export const Products = () => {
     [params]
   );
 
-  const handleFormData = (formData: InputsParams) => {
-    setParams({ ...formData, page: 1 });
-  };
+  const handleFormData = (formData: InputsParams) => setParams({ ...formData, page: 1 });
 
   return (
     <MainTemplate
