@@ -2,16 +2,19 @@ import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { FormGroup, Checkbox } from 'components/UI';
 import SearchBar from 'components/SearchBar/SearchBar';
-import { InputsParams } from 'services/products.types';
+import { InputsParams, ProductsParams } from 'services/products.types';
 import { SSearchForm, SFiltersWrapper } from './SearchForm.styles';
 
 type SearchFormProps = {
   onFormSubmit: (formData: InputsParams) => void;
+  initialValues?: ProductsParams;
 };
 
-const SearchForm = ({ onFormSubmit }: SearchFormProps) => {
+const SearchForm = ({ onFormSubmit, initialValues = {} }: SearchFormProps) => {
+  const { page, ...initialFormValues } = initialValues;
+
   const { register, watch, handleSubmit } = useForm<InputsParams>({
-    defaultValues: { search: '', active: false, promo: false },
+    defaultValues: { search: '', active: false, promo: false, ...initialFormValues },
   });
 
   const processData = (data: InputsParams) => {

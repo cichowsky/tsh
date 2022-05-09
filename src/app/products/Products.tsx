@@ -1,27 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 import MainTemplate from 'components/templates/MainTemplate';
 import SearchForm from 'components/SearchForm/SearchForm';
 import ProductCard, { ProductCardList } from 'components/Product/ProductCard';
 import ProductEmpty from 'components/Product/ProductEmpty';
 import Pagination from 'components/Pagination/Pagination';
 import { Spinner } from 'components/UI';
-import { useProducts } from 'services/products';
+import { useProducts, productsParamsFromURL, productsParamsToURL } from 'services/products';
 import { Product, ProductsParams, InputsParams } from 'services/products.types';
 
 export const Products = () => {
-  const [params, setParams] = useState<ProductsParams>({ page: 1 });
-  const { data, isLoading } = useProducts(params);
+  const { search, pathname } = useLocation();
+  const history = useHistory();
+
+  const [params, setParams] = useState<ProductsParams>(() => productsParamsFromURL(search));
+  const { data, isLoading } = useProducts(params, {
+    onSuccess: () => productsParamsToURL(params, history, pathname),
+  });
 
   const handlePageClick = (page: number) => {
     setParams({ ...params, ...{ page } });
   };
 
   const handleFormData = (formData: InputsParams) => {
-    setParams({ page: 1, ...formData });
+    setParams({ ...formData, page: 1 });
   };
 
   return (
-    <MainTemplate headerContent={<SearchForm onFormSubmit={handleFormData} />}>
+    <MainTemplate
+      headerContent={
+        <SearchForm onFormSubmit={handleFormData} initialValues={productsParamsFromURL(search)} />
+      }
+    >
       {isLoading && <Spinner />}
 
       {data?.items.length === 0 && <ProductEmpty />}
