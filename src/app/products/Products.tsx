@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import MainTemplate from 'components/templates/MainTemplate';
 import SearchForm from 'components/SearchForm/SearchForm';
@@ -18,9 +18,10 @@ export const Products = () => {
     onSuccess: () => productsParamsToURL(params, history, pathname),
   });
 
-  const handlePageClick = (page: number) => {
-    setParams({ ...params, ...{ page } });
-  };
+  const handlePageClick = useCallback(
+    (page: number) => setParams({ ...params, ...{ page } }),
+    [params]
+  );
 
   const handleFormData = (formData: InputsParams) => {
     setParams({ ...formData, page: 1 });
@@ -35,19 +36,19 @@ export const Products = () => {
       {data?.items.length === 0 && <ProductEmpty />}
 
       {data && data.items.length > 0 && (
-        <>
-          <ProductCardList>
-            {data.items.map((product: Product) => (
-              <ProductCard key={product.id} {...product} />
-            ))}
-          </ProductCardList>
+        <ProductCardList>
+          {data.items.map((product: Product) => (
+            <ProductCard key={product.id} {...product} />
+          ))}
+        </ProductCardList>
+      )}
 
-          <Pagination
-            activePage={data.meta.currentPage}
-            count={data.meta.totalPages}
-            onPageChange={handlePageClick}
-          />
-        </>
+      {data && data.meta.totalPages > 1 && (
+        <Pagination
+          activePage={data.meta.currentPage}
+          count={data.meta.totalPages}
+          onPageChange={handlePageClick}
+        />
       )}
     </MainTemplate>
   );
