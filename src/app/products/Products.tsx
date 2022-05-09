@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import MainTemplate from 'components/templates/MainTemplate';
 import SearchForm from 'components/SearchForm/SearchForm';
@@ -28,9 +28,7 @@ export const Products = () => {
 
   return (
     <MainTemplate
-      headerContent={
-        <SearchForm onFormSubmit={handleFormData} initialValues={productsParamsFromURL(search)} />
-      }
+      headerContent={<SearchForm onFormSubmit={handleFormData} initialValues={params} />}
     >
       {isLoading && <Spinner />}
 

@@ -28,10 +28,10 @@ export const productsParamsFromURL = (queryParamsFromUrl: string): ProductsParam
   const { page, active, promo, search } = queryStringToObject(queryParamsFromUrl);
 
   return {
-    ...(page && !Number.isNaN(parseInt(page, 10)) ? { page: parseInt(page, 10) } : { page: 1 }),
     ...(search && { search }),
     ...(active === 'true' && { active: true }),
     ...(promo === 'true' && { promo: true }),
+    ...(page && !Number.isNaN(parseInt(page, 10)) ? { page: parseInt(page, 10) } : { page: 1 }),
   };
 };
 

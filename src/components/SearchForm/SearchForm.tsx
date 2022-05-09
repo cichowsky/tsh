@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
 import { FormGroup, Checkbox } from 'components/UI';
 import SearchBar from 'components/SearchBar/SearchBar';
 import { InputsParams, ProductsParams } from 'services/products.types';
+import { processData, useLogoClick } from './SearchForm.helpers';
 import { SSearchForm, SFiltersWrapper } from './SearchForm.styles';
 
 type SearchFormProps = {
@@ -10,24 +12,15 @@ type SearchFormProps = {
   initialValues?: ProductsParams;
 };
 
+const defaultValues = { search: '', active: false, promo: false };
+
 const SearchForm = ({ onFormSubmit, initialValues = {} }: SearchFormProps) => {
+  const history = useHistory();
   const { page, ...initialFormValues } = initialValues;
 
-  const { register, watch, handleSubmit } = useForm<InputsParams>({
-    defaultValues: { search: '', active: false, promo: false, ...initialFormValues },
+  const { register, watch, handleSubmit, reset } = useForm<InputsParams>({
+    defaultValues: { ...defaultValues, ...initialFormValues },
   });
-
-  const processData = (data: InputsParams) => {
-    const outputData = { ...data };
-    if (outputData.search === '') delete outputData.search;
-    if (!outputData.active) delete outputData.active;
-    if (!outputData.promo) delete outputData.promo;
-    return outputData;
-  };
-
-  const onSubmit: SubmitHandler<InputsParams> = (data) => {
-    onFormSubmit(processData(data));
-  };
 
   useEffect(() => {
     const subscription = watch((data, { name }) => {
@@ -35,6 +28,15 @@ const SearchForm = ({ onFormSubmit, initialValues = {} }: SearchFormProps) => {
     });
     return () => subscription.unsubscribe();
   }, [watch]);
+
+  useLogoClick(history, () => {
+    reset(defaultValues);
+    onFormSubmit({});
+  });
+
+  const onSubmit: SubmitHandler<InputsParams> = (data) => {
+    onFormSubmit(processData(data));
+  };
 
   return (
     <SSearchForm onSubmit={handleSubmit(onSubmit)}>

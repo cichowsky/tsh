@@ -21,7 +21,7 @@ export const Header = ({ children }: HeaderProps) => {
     <SHeader>
       <SInner>
         <SLogoWrapper>
-          <SLogoLink to={AppRoute.Home}>
+          <SLogoLink to={{ pathname: AppRoute.Home, state: { logo: true } }}>
             <LogoSVG />
           </SLogoLink>
         </SLogoWrapper>
