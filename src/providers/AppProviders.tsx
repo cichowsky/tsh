@@ -6,7 +6,7 @@ import { ThemeProvider } from './ThemeProvider';
 
 import { AppProvidersProps } from './AppProviders.types';
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 export const AppProviders = ({ children }: AppProvidersProps) => (
   <QueryClientProvider client={queryClient}>

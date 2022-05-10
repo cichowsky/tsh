@@ -7,7 +7,7 @@ import ProductList from 'components/Product/ProductList';
 import ProductEmpty from 'components/Product/ProductEmpty';
 import Pagination from 'components/Pagination/Pagination';
 import { Spinner } from 'components/UI';
-import { useProducts, useProductsDataLoaded } from 'services/products';
+import { useProducts, useProductsDataLoaded, useProductsPrefetchPage } from 'services/products';
 import { Product, ProductsParams, InputsParams } from 'services/products.types';
 import { productsParamsFromURL, productsParamsToURL } from './Products.helpers';
 
@@ -23,6 +23,8 @@ export const Products = () => {
     productsParamsToURL(params, history, pathname);
     window.scrollTo(0, 0);
   });
+
+  useProductsPrefetchPage(data, params);
 
   const handlePageClick = useCallback(
     (page: number) => setParams({ ...params, ...{ page } }),
