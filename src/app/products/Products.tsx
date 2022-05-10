@@ -2,7 +2,8 @@ import React, { useState, useCallback } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import MainTemplate from 'components/templates/MainTemplate';
 import SearchForm from 'components/SearchForm/SearchForm';
-import ProductCard, { ProductCardList } from 'components/Product/ProductCard';
+import ProductCard from 'components/Product/ProductCard';
+import ProductList from 'components/Product/ProductList';
 import ProductEmpty from 'components/Product/ProductEmpty';
 import Pagination from 'components/Pagination/Pagination';
 import { Spinner } from 'components/UI';
@@ -16,7 +17,7 @@ export const Products = () => {
 
   const [params, setParams] = useState<ProductsParams>(() => productsParamsFromURL(search));
 
-  const { data, isLoading } = useProducts(params);
+  const { data, isLoading, isFetching } = useProducts(params);
 
   useProductsDataLoaded(data, () => {
     productsParamsToURL(params, history, pathname);
@@ -39,11 +40,11 @@ export const Products = () => {
       {data?.items.length === 0 && <ProductEmpty />}
 
       {data && data.items.length > 0 && (
-        <ProductCardList>
+        <ProductList isListFetching={isFetching}>
           {data.items.map((product: Product) => (
             <ProductCard key={product.id} {...product} />
           ))}
-        </ProductCardList>
+        </ProductList>
       )}
 
       {data && data.meta.totalPages > 1 && (

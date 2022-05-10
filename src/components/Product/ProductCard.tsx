@@ -4,15 +4,7 @@ import RatingDisplay from 'components/RatingDisplay/RatingDisplay';
 import { Button, Heading, Paragraph } from 'components/UI';
 import { Product } from 'services/products.types';
 import ProductDetails from './ProductDetails';
-import {
-  ProductCardList,
-  SCardWrapper,
-  SImageWrapper,
-  SBadge,
-  SContentWrapper,
-} from './ProductCard.styles';
-
-export { ProductCardList };
+import { SCardWrapper, SImageWrapper, SBadge, SContentWrapper } from './ProductCard.styles';
 
 const ProductCard = ({ id, name, description, rating, image, promo, active }: Product) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -45,4 +37,4 @@ const ProductCard = ({ id, name, description, rating, image, promo, active }: Pr
   );
 };
 
-export default ProductCard;
+export default React.memo(ProductCard);

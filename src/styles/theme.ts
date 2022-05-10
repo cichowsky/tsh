@@ -31,6 +31,7 @@ const theme: DefaultTheme = {
     iconClose: colors.black,
     iconCloseBg: colors.gray0,
     overlay: colors.darkTransparent,
+    overlayLoader: colors.white,
   },
   font: {
     size: {

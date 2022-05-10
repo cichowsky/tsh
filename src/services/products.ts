@@ -27,5 +27,5 @@ export const useProducts = (params: ProductsParams = {}, options: Options = {}) 
 export const useProductsDataLoaded = (data: ProductsData, callback: () => void) => {
   useEffect(() => {
     if (data?.items) callback();
-  }, [data]);
+  }, [data?.items]);
 };

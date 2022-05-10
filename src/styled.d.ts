@@ -19,6 +19,7 @@ declare module 'styled-components' {
       iconClose: string;
       iconCloseBg: string;
       overlay: string;
+      overlayLoader: string;
     };
     font: {
       size: {

@@ -9,3 +9,19 @@ export const rotate = keyframes`
     transform: rotate(360deg);
   }
 `;
+
+export const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  
+  to {
+    opacity: 1;
+  }
+`;
+
+export const fade50 = keyframes`
+  to {
+    opacity: 0.5;
+  }
+`;
