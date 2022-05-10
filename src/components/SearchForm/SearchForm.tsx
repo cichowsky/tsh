@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { FormGroup, Checkbox } from 'components/UI';
-import SearchBar from 'components/SearchBar/SearchBar';
+import { SearchBar } from 'components';
 import { InputsParams, ProductsParams } from 'services/products.types';
 import { processData, useLogoClick } from './SearchForm.helpers';
 import { SSearchForm, SFiltersWrapper } from './SearchForm.styles';

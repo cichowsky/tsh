@@ -1,11 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import MainTemplate from 'components/templates/MainTemplate';
-import SearchForm from 'components/SearchForm/SearchForm';
-import ProductCard from 'components/Product/ProductCard';
-import ProductList from 'components/Product/ProductList';
-import ProductEmpty from 'components/Product/ProductEmpty';
-import Pagination from 'components/Pagination/Pagination';
+import { MainTemplate } from 'components/templates';
+import { Pagination, SearchForm, ProductList, ProductCard, ProductEmpty } from 'components';
 import { Spinner } from 'components/UI';
 import { useProducts, useProductsDataLoaded, useProductsPrefetchPage } from 'services/products';
 import { Product, ProductsParams, InputsParams } from 'services/products.types';

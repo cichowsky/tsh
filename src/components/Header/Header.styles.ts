@@ -35,7 +35,7 @@ export const SLogoWrapper = styled.div`
   flex-shrink: 0;
 `;
 
-export const SContentWrapper = styled.div`
+export const SContent = styled.div`
   flex-grow: 1;
   flex-basis: 100%;
 
@@ -44,7 +44,7 @@ export const SContentWrapper = styled.div`
   }
 `;
 
-export const SActionsWrapper = styled.div`
+export const SActions = styled.div`
   flex-shrink: 0;
 
   ${({ theme }) => theme.mq.tablet} {
