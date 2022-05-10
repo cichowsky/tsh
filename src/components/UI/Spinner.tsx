@@ -4,7 +4,7 @@ import { theme } from 'styles/theme';
 import { rotate } from 'styles/keyframes';
 import { SRonly } from 'components/UI';
 
-const SSpinnerWrapper = styled.div`
+export const SSpinnerWrapper = styled.div`
   text-align: center;
 
   & > svg {

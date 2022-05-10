@@ -1,16 +1,6 @@
 import styled from 'styled-components';
 import { SRatingDisplay } from 'components/RatingDisplay/RatingDisplay.styles';
 
-export const ProductCardList = styled.section`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(27.2rem, 1fr));
-  gap: ${({ theme }) => theme.size.m};
-
-  ${({ theme }) => theme.mq.desktop} {
-    gap: ${({ theme: { size } }) => `${size.l} ${size.m}`};
-  }
-`;
-
 export const SCardWrapper = styled.article`
   display: flex;
   flex-direction: column;

@@ -1,47 +1,60 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 import MainTemplate from 'components/templates/MainTemplate';
 import SearchForm from 'components/SearchForm/SearchForm';
-import ProductCard, { ProductCardList } from 'components/Product/ProductCard';
+import ProductCard from 'components/Product/ProductCard';
+import ProductList from 'components/Product/ProductList';
 import ProductEmpty from 'components/Product/ProductEmpty';
 import Pagination from 'components/Pagination/Pagination';
 import { Spinner } from 'components/UI';
-import { Product } from 'components/Product/Product.type';
+import { useProducts, useProductsDataLoaded, useProductsPrefetchPage } from 'services/products';
+import { Product, ProductsParams, InputsParams } from 'services/products.types';
+import { productsParamsFromURL, productsParamsToURL } from './Products.helpers';
 
 export const Products = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { search, pathname } = useLocation();
+  const history = useHistory();
 
-  const [pageCount, setPageCount] = useState(10); // initial count from request
+  const [params, setParams] = useState<ProductsParams>(() => productsParamsFromURL(search));
 
-  useEffect(() => {
-    fetch('https://join-tsh-api-staging.herokuapp.com/products?limit=8')
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data.items);
-        setIsLoading(false);
-      });
-  }, []);
+  const { data, isLoading, isFetching } = useProducts(params);
 
-  const handlePageClick = (page: number) => {
-    console.log('clicked page', page); // trigger request -> new page
-  };
+  useProductsDataLoaded(data, () => {
+    productsParamsToURL(params, history, pathname);
+    window.scrollTo(0, 0);
+  });
+
+  useProductsPrefetchPage(data, params);
+
+  const handlePageClick = useCallback(
+    (page: number) => setParams({ ...params, ...{ page } }),
+    [params]
+  );
+
+  const handleFormData = (formData: InputsParams) => setParams({ ...formData, page: 1 });
 
   return (
-    <MainTemplate headerContent={<SearchForm />}>
+    <MainTemplate
+      headerContent={<SearchForm onFormSubmit={handleFormData} initialValues={params} />}
+    >
       {isLoading && <Spinner />}
 
-      {!isLoading && products.length === 0 && <ProductEmpty />}
+      {data?.items.length === 0 && <ProductEmpty />}
 
-      {!isLoading && products.length > 0 && (
-        <>
-          <ProductCardList>
-            {products.map((product) => (
-              <ProductCard key={product.id} {...product} />
-            ))}
-          </ProductCardList>
+      {data && data.items.length > 0 && (
+        <ProductList isListFetching={isFetching}>
+          {data.items.map((product: Product) => (
+            <ProductCard key={product.id} {...product} />
+          ))}
+        </ProductList>
+      )}
 
-          <Pagination activePage={1} count={pageCount} onPageChange={handlePageClick} />
-        </>
+      {data && data.meta.totalPages > 1 && (
+        <Pagination
+          activePage={data.meta.currentPage}
+          count={data.meta.totalPages}
+          onPageChange={handlePageClick}
+        />
       )}
     </MainTemplate>
   );
