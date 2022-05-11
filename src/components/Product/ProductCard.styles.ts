@@ -8,7 +8,6 @@ export const SCardWrapper = styled.article`
   min-height: 40rem;
   width: 100%;
   max-width: 42rem;
-  margin: 0 auto;
 
   font-size: ${({ theme }) => theme.font.size.xs};
   line-height: ${({ theme }) => theme.font.size.s};

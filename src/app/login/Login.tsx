@@ -1,28 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-import { AppRoute } from 'routing/AppRoute.enum';
+import { LoginForm } from 'components';
+import { AuthTemplate } from 'components/templates';
+import { usePageTitle } from 'hooks/usePageTitle';
 
 export const Login = () => {
+  usePageTitle('Join TSH - Login');
   return (
-    <>
-      <Link to={AppRoute.Home}>Products page</Link>
-      <h2>Login</h2>
-      <form>
-        <div>
-          <label>
-            username:
-            <input name="username" />
-          </label>
-        </div>
-        <div>
-          <label>
-            password:
-            <input name="password" type="password" />
-          </label>
-        </div>
-        <button type="submit">submit</button>
-      </form>
-    </>
+    <AuthTemplate>
+      <LoginForm />
+    </AuthTemplate>
   );
 };

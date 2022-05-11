@@ -1,9 +1,8 @@
 import axios from 'axios';
-
-const apiURL = process.env.REACT_APP_API_URL || 'https://join-tsh-api-staging.herokuapp.com';
+import { API_URL } from 'app/config';
 
 const api = axios.create({
-  baseURL: apiURL,
+  baseURL: API_URL,
 });
 
 export { api };

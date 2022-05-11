@@ -1,16 +1,9 @@
 import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+import { LogoLink } from 'components';
 import { Button } from 'components/UI';
 import { AppRoute } from 'routing/AppRoute.enum';
-import { ReactComponent as LogoSVG } from 'assets/icons/logo.svg';
-import {
-  SHeader,
-  SInner,
-  SLogoWrapper,
-  SLogoLink,
-  SActionsWrapper,
-  SContentWrapper,
-} from './Header.styles';
+import { SHeader, SInner, SLogoWrapper, SActions, SContent } from './Header.styles';
 
 type HeaderProps = {
   children: ReactNode;
@@ -21,18 +14,16 @@ export const Header = ({ children }: HeaderProps) => {
     <SHeader>
       <SInner>
         <SLogoWrapper>
-          <SLogoLink to={{ pathname: AppRoute.Home, state: { logo: true } }}>
-            <LogoSVG />
-          </SLogoLink>
+          <LogoLink />
         </SLogoWrapper>
 
-        <SActionsWrapper>
+        <SActions>
           <Button $ghost as={Link} to={AppRoute.Login}>
             Log in
           </Button>
-        </SActionsWrapper>
+        </SActions>
 
-        <SContentWrapper>{children}</SContentWrapper>
+        <SContent>{children}</SContent>
       </SInner>
     </SHeader>
   );

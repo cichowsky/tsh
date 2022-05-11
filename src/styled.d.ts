@@ -14,6 +14,7 @@ declare module 'styled-components' {
       inputBg: string;
       inputBorder: string;
       background: string;
+      background2: string;
       containerBg: string;
       iconMuted: string;
       iconClose: string;

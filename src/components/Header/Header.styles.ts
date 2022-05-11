@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const SHeader = styled.header`
   background-color: ${({ theme }) => theme.color.containerBg};
@@ -25,17 +24,11 @@ export const SInner = styled.div`
   }
 `;
 
-export const SLogoLink = styled(Link)`
-  display: flex;
-  align-items: center;
-  height: ${({ theme }) => theme.size.xl};
-`;
-
 export const SLogoWrapper = styled.div`
   flex-shrink: 0;
 `;
 
-export const SContentWrapper = styled.div`
+export const SContent = styled.div`
   flex-grow: 1;
   flex-basis: 100%;
 
@@ -44,7 +37,7 @@ export const SContentWrapper = styled.div`
   }
 `;
 
-export const SActionsWrapper = styled.div`
+export const SActions = styled.div`
   flex-shrink: 0;
 
   ${({ theme }) => theme.mq.tablet} {
