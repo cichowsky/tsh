@@ -2,11 +2,12 @@ import { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { api } from 'utils/apiClient';
 import { queryClient } from 'providers/AppProviders';
+import { ITEMS_PER_PAGE } from 'app/config';
 import { ProductsParams, ProductsResponseData, ProductsData } from './products.types';
 
 const fetchProducts = async (params: ProductsParams = {}): Promise<ProductsResponseData> => {
   const { data } = await api.get('/products', {
-    params: { limit: 8, ...params },
+    params: { limit: ITEMS_PER_PAGE, ...params },
   });
 
   return data;
