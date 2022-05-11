@@ -5,9 +5,11 @@ import { Pagination, SearchForm, ProductList, ProductCard, ProductEmpty } from '
 import { Spinner } from 'components/UI';
 import { useProducts, useProductsDataLoaded, useProductsPrefetchPage } from 'services/products';
 import { Product, ProductsParams, InputsParams } from 'services/products.types';
+import { usePageTitle } from 'hooks/usePageTitle';
 import { productsParamsFromURL, productsParamsToURL } from './Products.helpers';
 
 export const Products = () => {
+  usePageTitle('Join TSH - products');
   const { search, pathname } = useLocation();
   const history = useHistory();
 
