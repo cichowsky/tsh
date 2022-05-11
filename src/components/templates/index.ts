@@ -1,3 +1,4 @@
-import MainTemplate from './MainTemplate';
+import MainTemplate from './MainTemplate/MainTemplate';
+import AuthTemplate from './AuthTemplate/AuthTemplate';
 
-export { MainTemplate };
+export { MainTemplate, AuthTemplate };

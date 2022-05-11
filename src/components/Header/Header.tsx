@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+import { LogoLink } from 'components';
 import { Button } from 'components/UI';
-import { ReactComponent as LogoSVG } from 'assets/icons/logo.svg';
 import { AppRoute } from 'routing/AppRoute.enum';
-import { SHeader, SInner, SLogoWrapper, SLogoLink, SActions, SContent } from './Header.styles';
+import { SHeader, SInner, SLogoWrapper, SActions, SContent } from './Header.styles';
 
 type HeaderProps = {
   children: ReactNode;
@@ -14,9 +14,7 @@ export const Header = ({ children }: HeaderProps) => {
     <SHeader>
       <SInner>
         <SLogoWrapper>
-          <SLogoLink to={{ pathname: AppRoute.Home, state: { logo: true } }}>
-            <LogoSVG />
-          </SLogoLink>
+          <LogoLink />
         </SLogoWrapper>
 
         <SActions>

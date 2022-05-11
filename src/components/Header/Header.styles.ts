@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const SHeader = styled.header`
   background-color: ${({ theme }) => theme.color.containerBg};
@@ -23,12 +22,6 @@ export const SInner = styled.div`
   ${({ theme }) => theme.mq.desktop} {
     gap: 10.5rem;
   }
-`;
-
-export const SLogoLink = styled(Link)`
-  display: flex;
-  align-items: center;
-  height: ${({ theme }) => theme.size.xl};
 `;
 
 export const SLogoWrapper = styled.div`

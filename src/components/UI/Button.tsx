@@ -2,17 +2,19 @@ import styled from 'styled-components';
 
 type ButtonProps = {
   $ghost?: boolean;
+  isBig?: boolean;
 };
 
 const Button = styled.button<ButtonProps>`
   display: inline-block;
-  padding: ${({ theme: { size } }) => `1rem ${size.m}`};
-  border-radius: ${({ theme }) => theme.borderRadius.small};
-
+  font-size: ${({ theme: { font }, isBig }) => (isBig ? font.size.s : font.size.xs)};
+  line-height: ${({ theme: { font }, isBig }) => (isBig ? font.size.l : font.size.s)};
+  padding: ${({ theme: { size }, isBig }) => (isBig ? `1.1rem ${size.l}` : `1rem ${size.m}`)};
   color: ${({ theme, $ghost }) => ($ghost ? theme.color.primary : theme.color.textLight)};
   background-color: ${({ theme, $ghost }) =>
     $ghost ? theme.color.textLight : theme.color.primary};
   border: 1px solid ${({ theme }) => theme.color.primary};
+  border-radius: ${({ theme }) => theme.borderRadius.small};
   text-decoration: none;
   transition: ${({ theme: { transitionTime } }) =>
     `color ${transitionTime}, background-color ${transitionTime}, border-color ${transitionTime}`};

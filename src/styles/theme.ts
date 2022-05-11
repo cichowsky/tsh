@@ -26,6 +26,7 @@ const theme: DefaultTheme = {
     inputBg: colors.white,
     inputBorder: colors.gray2,
     background: colors.gray0,
+    background2: colors.white,
     containerBg: colors.white,
     iconMuted: colors.gray4,
     iconClose: colors.black,
