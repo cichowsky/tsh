@@ -13,7 +13,7 @@ export const Products = () => {
 
   const [params, setParams] = useState<ProductsParams>(() => productsParamsFromURL(search));
 
-  const { data, isLoading, isFetching } = useProducts(params);
+  const { data, isLoading, isFetching, isError } = useProducts(params);
 
   useProductsDataLoaded(data, () => {
     productsParamsToURL(params, history, pathname);
@@ -33,6 +33,8 @@ export const Products = () => {
     <MainTemplate
       headerContent={<SearchForm onFormSubmit={handleFormData} initialValues={params} />}
     >
+      {isError && <p>Something went wrong. Please reload page.</p>}
+
       {isLoading && <Spinner />}
 
       {data?.items.length === 0 && <ProductEmpty />}
