@@ -29,11 +29,6 @@ const Pagination = ({ activePage = 1, count = 0, onPageChange }: PaginationProps
     if (typeof onPageChange !== 'undefined') onPageChange(page);
   };
 
-  if (activePage > count) {
-    // eslint-disable-next-line no-console
-    console.error(`Pagination error: activePage ${activePage} is greater than count ${count}!`);
-  }
-
   if (pages.length <= 1 || count === 0 || activePage > count) return null;
 
   return (

@@ -8,9 +8,8 @@ describe('Login', () => {
   test('Displays all information', async () => {
     const { getByText, getByLabelText } = render(<Login />);
 
-    expect(getByText('Products page')).toBeInTheDocument();
-    expect(getByText('Products page')).toBeInTheDocument();
-    expect(getByLabelText('username:')).toBeInTheDocument();
-    expect(getByLabelText('password:')).toBeInTheDocument();
+    expect(getByText(/login/i)).toBeInTheDocument();
+    expect(getByLabelText(/username/i)).toBeInTheDocument();
+    expect(getByLabelText(/password/i)).toBeInTheDocument();
   });
 });
