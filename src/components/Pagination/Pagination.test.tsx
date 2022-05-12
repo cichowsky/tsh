@@ -1,11 +1,9 @@
 /* eslint-disable no-plusplus */
 import React from 'react';
-import { render, screen } from 'tests';
+import { render, screen, fireEvent } from 'tests';
 import Pagination from './Pagination';
 
-const pageClick = (page: number) => {
-  console.log(page);
-};
+const pageClick = jest.fn();
 
 const renderPagesArray = () => {
   const pageButtons = screen.getAllByRole('button', { name: /go to page/i });
@@ -104,5 +102,21 @@ describe('Pagination', () => {
     rerender(<Pagination activePage={10} count={10} onPageChange={pageClick} />);
     const pageNumbers10 = renderPagesArray();
     expect(pageNumbers10).toEqual([5, 6, 7, 8, 9, 10]);
+  });
+
+  test('Click on button gives proper page number', () => {
+    render(<Pagination activePage={2} count={10} onPageChange={pageClick} />);
+    const firstPageButton = screen.getByRole('button', { name: /go to first page/i });
+    const lastPageButton = screen.getByRole('button', { name: /go to last page/i });
+    const pageButton2 = screen.getByRole('button', { name: /go to page 2/i });
+
+    fireEvent.click(firstPageButton);
+    expect(pageClick).toBeCalledWith(1);
+
+    fireEvent.click(lastPageButton);
+    expect(pageClick).toBeCalledWith(10);
+
+    fireEvent.click(pageButton2);
+    expect(pageClick).toBeCalledWith(2);
   });
 });
