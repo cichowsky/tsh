@@ -25,7 +25,7 @@ export const SProductList = styled.section<ProductListProps>`
       max-width: 86rem;
       margin: 0 auto;
 
-      @media (min-width: 1220px) {
+      @media (min-width: 1225px) {
         max-width: none;
       }
     `}
